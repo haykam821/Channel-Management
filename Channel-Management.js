@@ -118,13 +118,14 @@ bot.on('message', function(user, userID, channelID, message, event) {
               // Locate [LOGS] channel.
               var loopChannel = serverChannels[Object.keys(serverChannels)[i]];
 
-              if (loopChannel.type !== 'text') {
+              if (loopChannel.type !== 'text' || loopChannel.topic == null) {
                 continue;
-              }
-              if (loopChannel.topic.indexOf(logIndicator) > -1) {
-                //
-                logChannel = Object.keys(serverChannels)[i];
-                break;
+              } else {
+                if (loopChannel.topic.indexOf(logIndicator) > -1) {
+                  //
+                  logChannel = Object.keys(serverChannels)[i];
+                  break;
+                }
               }
             }
           }
