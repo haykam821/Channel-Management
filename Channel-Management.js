@@ -208,7 +208,7 @@ bot.on('message', function(user, userID, channelID, message, event) {
                           inline: true
                         }, {
                           name: 'Type',
-                          value: callback.type == 'text' ? `Text` : `Voice`,
+                          value: callback.type == 'text' ? `Text` : callback.type == 'category' || callback.type == 4 ? 'Category' : `Voice`,
                           inline: true
                         }, {
                           name: 'NSFW',
